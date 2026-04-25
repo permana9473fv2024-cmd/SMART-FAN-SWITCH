@@ -1,17 +1,67 @@
-# Identitas Mahasiswa
-Nama: Permana Eka Prayoga
+# 🌬️ SMART-FAN-SWITCH (Arduino-Based Smart Fan)
 
-NIM: 24090620005
+![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-Mata Kuliah: Praktek Mikrokontroller
+An interactive Smart Fan prototype using an Arduino Uno. The main idea was to reverse-engineer how a standard desk fan works and upgrade it with precise digital control. This project was simulated via Tinkercad and built for university coursework.
 
-Program Studi: D4 Teknik Elektronika
+---
 
-# SMART-FAN-SWITCH
-For this project, I built an interactive Smart Fan prototype using an Arduino Uno. The main idea was to reverse-engineer how a standard desk fan works and upgrade it with precise digital control. Instead of using those clunky 3-speed mechanical buttons, I designed the system to use a single slide switch for the main power and a rotary potentiometer for real-time speed adjustment.
+## 👨‍🎓 Identitas Mahasiswa
+| Keterangan | Detail |
+| :--- | :--- |
+| **Nama** | Permana Eka Prayoga |
+| **NIM** | 24090620005 |
+| **Program Studi** | D4 Teknik Elektronika |
+| **Mata Kuliah** | Praktek Mikrokontroller |
 
-For the main drive, I used a DC gear motor hooked up to an L298N motor driver module. The Arduino reads the analog input from the pot and maps it into a PWM signal. This signal is fed to the L298N's Enable pin to control the motor's duty cycle, which gives a really smooth transition from a slow breeze all the way up to max RPM.
+---
 
-To make it act like a real fan, I added an auto-swing feature using a micro servo. As soon as you flip the switch ON, the servo starts panning left and right. I hardcoded the sweep angle to stay strictly between 50 and 130 degrees so the airflow stays focused up front, rather than doing a full 180 sweep. When you turn the switch OFF, the microcontroller immediately kills the PWM signal to the DC motor and auto-centers the servo back to 90 degrees before entering standby mode.
+## 📸 Simulation Preview
+*(You can watch the full simulation in the `Video_Tinkercad.mp4` file included in this repository).*
 
-For the visual interface, I wired up a 16x2 LCD with an I2C backpack to save on wiring pins. It works as a live dashboard showing the current power status and the speed percentage. Overall, the build effectively demonstrates how to tie together analog sensor readings, electro-mechanical actuators, and I2C communication into a single, automated embedded system.
+![Circuit Design](./Gambar%20Rangkaian) 
+> **Note:** If the image doesn't load, make sure the image file is correctly placed in the `Gambar Rangkaian` folder.
+
+---
+
+## ✨ Key Features
+* **🎚️ Single-Switch Operation:** Toggle the entire system ON/OFF using a single slide switch.
+* **⚙️ Variable Speed (PWM):** Real-time RPM adjustment via a rotary potentiometer for smooth transitions from a slow breeze to max RPM.
+* **🔄 Auto-Swing Mechanism:** A micro servo automatically pans left and right (restricted between 50° and 130° for focused front airflow). Auto-centers when turned off.
+* **📊 Live LCD Dashboard:** A 16x2 I2C LCD displays the real-time power status (NYALA/MATI) and the current speed percentage.
+
+---
+
+## 🛠️ Hardware Components
+To replicate this project physically or in a simulator, you will need:
+1. Arduino Uno R3
+2. L293D Motor Driver IC (or L298N Module)
+3. DC Gear Motor (Fan Blade Actuator)
+4. Micro Servo Motor (Swing Actuator)
+5. 16x2 LCD Display with I2C Backpack
+6. Slide Switch (SPDT) & Potentiometer
+7. Red LED + 220Ω Resistor
+8. External Power Supply (e.g., Dual Output Power Supply for Logic and Motors)
+
+---
+
+## 📁 Repository Contents
+This repository contains all the necessary files to understand, replicate, and run the Smart Fan simulation:
+
+* 📄 **`Code.ino`** : The main C++ source code for the Arduino microcontroller.
+* 📄 **`Brave Kasi.pdf`** : The complete schematic diagram of the circuit.
+* 📊 **`Komponen Rangkaian.xlsx`** : Bill of Materials (BOM) detailing all hardware components used.
+* 🎥 **`Video_Tinkercad.mp4`** : A video demonstration of the circuit working in the Tinkercad simulator.
+* 🖼️ **`Gambar Rangkaian`** : Directory/File containing screenshots of the circuit wiring.
+* 🔗 **`Link`** : Direct link to the live Tinkercad simulation workspace.
+
+---
+
+## 🚀 How to Use / Simulate
+1. Open the `.ino` file in the Arduino IDE to view the source code.
+2. If you want to test the simulation, open the provided Tinkercad `Link`.
+3. Start the simulation.
+4. Slide the switch to turn the system ON.
+5. Rotate the potentiometer to see the DC Motor's RPM change and watch the servo sweep!
