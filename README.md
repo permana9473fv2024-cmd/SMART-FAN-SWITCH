@@ -31,8 +31,7 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 
 ## 🔗 Link
 * [Source Code](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino)
-* [TinkerCAD](https://www.tinkercad.com/things/l7gJF1iMUh7-brave-kasi)
-* [BOM / Komponen Excel](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Komponen%20Rangkaian.xlsx)
+* [TinkerCAD](https://www.tinkercad.com/things/i7gJF1iMUbZ-brave-kasi/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=e3bFL1r7fL0kbu9hlfht1UG9M825wudXA7_Jn3c3sak)
 * [Schematics](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Brave%20Kasi.pdf)
 * [Video Documentation](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Video_Tinkercad.mp4)
 
