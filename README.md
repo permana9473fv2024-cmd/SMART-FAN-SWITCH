@@ -2,16 +2,18 @@
 
 ![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+
+## 📸 Gambar Rangkaian
+![Gambar Rangkaian](Gambar%20Rangkaian.jpg)
 
 ## 📖 Description
-Hello everyone! Welcome to my university project repository for the microcontroller class. This repository presents an interactive and highly responsive Smart Fan simulation centered around the versatile Arduino Uno microcontroller. At its core, the system is meticulously designed to replicate the everyday mechanics and user experience of a standard commercial desk fan, elevating it through the integration of modern digital control. By combining electro-mechanical actuators, precise speed modulation techniques, and real-time status monitoring, the prototype bridges the gap between basic household appliances and intelligent automated systems. The primary objective is to demonstrate how analog inputs can be seamlessly translated into complex, synchronized mechanical outputs while providing constant visual feedback. 
+Hello everyone! Welcome to my university project repository for the microcontroller class. This repository presents an interactive Smart Fan simulation centered around the versatile Arduino Uno. The system is designed to replicate the everyday mechanics of a commercial desk fan, elevating it through the integration of modern digital control. By combining electro-mechanical actuators, precise speed modulation techniques, and real-time status monitoring, the prototype bridges the gap between basic appliances and intelligent automated systems. The primary objective is to demonstrate how analog inputs can be seamlessly translated into synchronized mechanical outputs while providing constant visual feedback.
 
-The operational workflow of the Smart Fan is engineered to be highly intuitive. A primary slide switch serves as the master power control, mimicking the main physical button of a traditional appliance. When the switch is toggled to the ON position, the system instantly transitions from a dormant standby state to an active operational mode, immediately signaled by a red LED indicator. When powered down, the microcontroller executes a graceful shutdown sequence: turning off the main motor, disabling the LED, and commanding the oscillation mechanism to return to a centered, forward-facing position. 
+The operational workflow is highly intuitive. A primary slide switch serves as the master power control. When toggled to the ON position, the system transitions from standby to an active mode, immediately signaled by a red LED indicator. When powered down, the microcontroller executes a graceful shutdown: turning off the main motor, disabling the LED, and commanding the oscillation mechanism to return to a centered, forward-facing position.
 
-One standout feature is its precise speed control system. Instead of relying on restrictive mechanical buttons, this simulation utilizes a rotary potentiometer to offer fluid, variable speed adjustment. The Arduino Uno continuously reads the analog voltage and mathematically maps these readings to a Pulse Width Modulation signal. This PWM signal is fed into an L293D motor driver, which efficiently regulates the voltage supplied to the DC motor representing the fan blades. 
+One standout feature is its precise speed control. Instead of relying on restrictive mechanical buttons, this simulation utilizes a rotary potentiometer to offer fluid, variable speed adjustment. The Arduino reads the analog voltage and mathematically maps it to a Pulse Width Modulation (PWM) signal. This PWM signal is fed into an L293D motor driver, which efficiently regulates the voltage supplied to the DC motor representing the fan blades.
 
-To further emulate the realistic behavior of a commercial fan, the prototype features an automated panning mechanism powered by a micro servo motor. When fully activated, the servo independently begins a sweeping motion. The oscillation angle is constrained within a specific range, sweeping symmetrically from 50 to 130 degrees to ensure focused airflow. Finally, real-time status monitoring is elegantly handled by a 16x2 I2C LCD, acting as a digital dashboard displaying the power state and current speed percentage.
+To emulate the realistic behavior of a commercial fan, the prototype features an automated panning mechanism powered by a micro servo motor. When activated, the servo independently begins a sweeping motion. The oscillation angle is constrained within a specific range, sweeping symmetrically from 50 to 130 degrees to ensure focused airflow. Finally, real-time status monitoring is handled by a 16x2 I2C LCD, acting as a digital dashboard displaying the power state and current speed percentage.
 
 ---
 
@@ -20,36 +22,43 @@ To further emulate the realistic behavior of a commercial fan, the prototype fea
 | :--- | :--- |
 | **Nama** | Permana Eka Prayoga |
 | **NIM** | 24090620005 |
+| **Email** | permana9473fv.2024@student.uny.ac.id |
 | **Program Studi** | D4 Teknik Elektronika |
 | **Mata Kuliah** | Praktek Mikrokontroller |
 
 ---
 
-## 🔗 Live Simulation Link
-Ingin melihat alat ini bekerja secara langsung? Klik tautan di bawah ini untuk mencoba simulasi interaktifnya:
-👉 **[CLICK HERE TO VIEW TINKERCAD SIMULATION](Masukkan_Link_Tinkercad_Kamu_Disini)** 👈
+## 🔗 Link Project & Source Code
+* **Code.ino** : [https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino)
+* **Simulasi dan Demo Video** : [https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Link](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Link)
 
 ---
 
-## 🔌 Pin Configuration (Wiring Guide)
-Berikut adalah konfigurasi pin (*wiring*) yang digunakan pada Arduino Uno. Pastikan semua komponen memiliki jalur *Ground* (GND) yang saling terhubung (*Common Ground*).
-
-| Komponen | Pin Arduino | Keterangan / Fungsi |
+## 📦 Component
+| Name | Quantity | Component |
 | :--- | :---: | :--- |
-| **Slide Switch** | `D2` | Sakelar Utama (ON/OFF) |
-| **Potensiometer** | `A0` | Input Analog untuk mengatur Speed |
-| **L293D (EN1)** | `D10` | Sinyal PWM untuk mengatur kecepatan putaran |
-| **L293D (IN1)** | `D8` | Logika arah putaran motor |
-| **L293D (IN2)** | `D7` | Logika arah putaran motor |
-| **Motor Servo** | `D9` | Sinyal PWM untuk mengayunkan (*swing*) |
-| **LED Merah** | `D12` | Indikator Power (Menyala saat ON) |
-| **LCD I2C (SDA)** | `A4` | Jalur Data Komunikasi I2C |
-| **LCD I2C (SCL)** | `A5` | Jalur Clock Komunikasi I2C |
+| U1 | 1 | Arduino Uno R3 |
+| U2 | 1 | LCD 16x2 I2C |
+| U3 | 1 | L293D Motor Driver |
+| M1 | 1 | DC Motor |
+| SERVO1 | 1 | Micro Servo |
+| Rpot1 | 1 | Potentiometer |
+| D1 | 1 | Red LED |
+| R1 | 1 | 220 Ω Resistor |
+| S1 | 1 | Slide Switch |
+| P1 | 1 | Power Supply |
 
 ---
 
-## ✨ Key Features
-* **🎚️ Single-Switch Operation:** Toggle the entire system ON/OFF menggunakan sakelar geser.
-* **⚙️ Variable Speed (PWM):** Penyesuaian RPM *real-time* via potensiometer.
-* **🔄 Auto-Swing Mechanism:** Servo mikro mengayun otomatis (50° hingga 130°) dan kembali ke tengah saat dimatikan.
-* **📊 Live LCD Dashboard:** Menampilkan status daya dan persentase kecepatan secara langsung.
+## 🔌 Pin Configuration
+| Komponen | Pin Arduino | Description |
+| :--- | :---: | :--- |
+| Slide Switch | `D2` | Input (Power ON/OFF) |
+| Potentiometer | `A0` | Input (Speed Control) |
+| L293D (EN1) | `D10` | Output (PWM Motor Speed) |
+| L293D (IN1) | `D8` | Output (Motor Direction) |
+| L293D (IN2) | `D7` | Output (Motor Direction) |
+| Motor Servo | `D9` | Output (Swing Control) |
+| Red LED | `D12` | Output (Power Indicator) |
+| LCD I2C (SDA) | `A4` | I2C Data |
+| LCD I2C (SCL) | `A5` | I2C Clock |
