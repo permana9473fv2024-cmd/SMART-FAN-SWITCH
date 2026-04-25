@@ -4,12 +4,13 @@
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
 ## 📸 Gambar Rangkaian
-<img src="Gambar%20Rangkaian.jpg" alt="Gambar Rangkaian Smart Fan" width="100%">
+<img width="1916" height="942" alt="Gambar Rangkaian" src="https://github.com/user-attachments/assets/1f25fe77-631d-42b5-9a6c-0aaab5c47c65" />
+
 
 ## 📖 Description
 Hello everyone! Welcome to my university project repository for the microcontroller class. This repository presents an interactive Smart Fan simulation centered around the versatile Arduino Uno. The system is designed to replicate the everyday mechanics of a commercial desk fan, elevating it through the integration of modern digital control. By combining electro-mechanical actuators, precise speed modulation techniques, and real-time status monitoring, the prototype bridges the gap between basic appliances and intelligent automated systems. The primary objective is to demonstrate how analog inputs can be seamlessly translated into synchronized mechanical outputs while providing constant visual feedback.
 
-The operational workflow is highly intuitive. A primary slide switch serves as the master power control. When toggled to the ON position, the system transitions from standby to an active mode, immediately signaled by a red LED indicator. When powered down, the microcontroller executes a graceful shutdown: turning off the main motor, disabling the LED, and commanding the oscillation mechanism to return to a centered, forward-facing position.
+The operational workflow is highly intuitive and features a built-in fail-safe mechanism. A primary slide switch serves as both the master power control and an emergency stop. When toggled to the ON position, the system transitions from standby to an active mode, immediately signaled by a red LED indicator. In case of an emergency or when powered down, toggling the switch OFF executes a graceful but instant shutdown: immediately halting the main motor, disabling the LED, and commanding the oscillation mechanism to return to a centered, forward-facing position.
 
 One standout feature is its precise speed control. Instead of relying on restrictive mechanical buttons, this simulation utilizes a rotary potentiometer to offer fluid, variable speed adjustment. The Arduino reads the analog voltage and mathematically maps it to a Pulse Width Modulation (PWM) signal. This PWM signal is fed into an L293D motor driver, which efficiently regulates the voltage supplied to the DC motor representing the fan blades.
 
@@ -28,9 +29,22 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 
 ---
 
-## 🔗 Link Project & Source Code
-* **Code.ino** : [https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino)
-* **Simulasi dan Demo Video** : [https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Link](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Link)
+## 🔗 Link
+* [Source Code](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Code.ino)
+* [TinkerCAD](https://www.tinkercad.com/things/l7gJF1iMUh7-brave-kasi)
+* [BOM / Komponen Excel](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Komponen%20Rangkaian.xlsx)
+* [Schematics](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Brave%20Kasi.pdf)
+* [Video Documentation](https://github.com/permana9473fv2024-cmd/SMART-FAN-SWITCH/blob/main/Video_Tinkercad.mp4)
+
+---
+
+## ⚙️ System Logic (Cara Kerja)
+1. **Standby Mode:** Saat sakelar di posisi OFF (LOW), mikrokontroler memutus sinyal PWM, mematikan LED, dan mengembalikan posisi Servo ke titik tengah (90°). Layar LCD menampilkan status "MATI".
+2. **Active Mode:** Saat sakelar digeser ke ON (HIGH), sistem aktif dan membaca input analog dari potensiometer (0-1023).
+3. **Speed Control:** Nilai analog tersebut di-mapping menjadi nilai PWM (0-255) yang dikirim ke pin `EN1` pada L293D untuk memutar motor DC.
+4. **Auto-Swing:** Secara bersamaan, Servo Motor akan melakukan *looping* ayunan dari sudut 50° ke 130° dan sebaliknya dengan penambahan *step* yang halus.
+5. **Real-time UI:** LCD I2C di-update secara berkala tanpa menggunakan fungsi `delay()` yang memblokir program, sehingga pembacaan sensor dan pergerakan aktuator tetap responsif.
+6. **Emergency / Fail-Safe Stop:** Berfungsi ganda sebagai pengaman, menggeser sakelar utama ke posisi OFF akan secara instan memutus daya putaran aktuator motor DC dan menghentikan pergerakan mekanis secara aman dan terkendali.
 
 ---
 
@@ -53,7 +67,7 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 ## 🔌 Pin Configuration
 | Komponen | Pin Arduino | Description |
 | :--- | :---: | :--- |
-| Slide Switch | `D2` | Input (Power ON/OFF) |
+| Slide Switch | `D2` | Input (Power ON/OFF & Emergency Halt) |
 | Potentiometer | `A0` | Input (Speed Control) |
 | L293D (EN1) | `D10` | Output (PWM Motor Speed) |
 | L293D (IN1) | `D8` | Output (Motor Direction) |
@@ -62,3 +76,8 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 | Red LED | `D12` | Output (Power Indicator) |
 | LCD I2C (SDA) | `A4` | I2C Data |
 | LCD I2C (SCL) | `A5` | I2C Clock |
+
+---
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/permana9473fv2024-cmd">Permana Eka Prayoga</a>
+</p>
