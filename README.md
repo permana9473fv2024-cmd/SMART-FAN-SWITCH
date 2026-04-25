@@ -1,3 +1,9 @@
+# Identitas Mahasiswa
+Nama: Permana Eka Prayoga
+NIM: 24090620005
+Mata Kuliah: Praktek Mikrokontroller
+Program Studi: D4 Teknik Elektronika
+
 # SMART-FAN-SWITCH
 For this project, I built an interactive Smart Fan prototype using an Arduino Uno. The main idea was to reverse-engineer how a standard desk fan works and upgrade it with precise digital control. Instead of using those clunky 3-speed mechanical buttons, I designed the system to use a single slide switch for the main power and a rotary potentiometer for real-time speed adjustment.
 
