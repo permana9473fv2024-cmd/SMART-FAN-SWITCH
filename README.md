@@ -4,7 +4,7 @@
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
 ## 📸 Gambar Rangkaian
-![Gambar Rangkaian](Gambar%20Rangkaian.jpg)
+<img src="Gambar%20Rangkaian.jpg" alt="Gambar Rangkaian Smart Fan" width="100%">
 
 ## 📖 Description
 Hello everyone! Welcome to my university project repository for the microcontroller class. This repository presents an interactive Smart Fan simulation centered around the versatile Arduino Uno. The system is designed to replicate the everyday mechanics of a commercial desk fan, elevating it through the integration of modern digital control. By combining electro-mechanical actuators, precise speed modulation techniques, and real-time status monitoring, the prototype bridges the gap between basic appliances and intelligent automated systems. The primary objective is to demonstrate how analog inputs can be seamlessly translated into synchronized mechanical outputs while providing constant visual feedback.
