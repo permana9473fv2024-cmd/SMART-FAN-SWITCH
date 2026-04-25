@@ -8,13 +8,15 @@
 
 
 ## 📖 Description
-Hello everyone! Welcome to my university project repository for the microcontroller class. This repository presents an interactive Smart Fan simulation centered around the versatile Arduino Uno. The system is designed to replicate the everyday mechanics of a commercial desk fan, elevating it through the integration of modern digital control. By combining electro-mechanical actuators, precise speed modulation techniques, and real-time status monitoring, the prototype bridges the gap between basic appliances and intelligent automated systems. The primary objective is to demonstrate how analog inputs can be seamlessly translated into synchronized mechanical outputs while providing constant visual feedback.
+Hello everyone! Welcome to my university project repository for the microcontroller class. This project features an interactive **Arduino-based Smart Fan** simulation designed in Tinkercad. It demonstrates the integration of analog inputs, digital logic, and electro-mechanical actuators into a cohesive embedded system.
 
-The operational workflow is highly intuitive and features a built-in fail-safe mechanism. A primary slide switch serves as both the master power control and an emergency stop. When toggled to the ON position, the system transitions from standby to an active mode, immediately signaled by a red LED indicator. In case of an emergency or when powered down, toggling the switch OFF executes a graceful but instant shutdown: immediately halting the main motor, disabling the LED, and commanding the oscillation mechanism to return to a centered, forward-facing position.
+Based on the circuit diagram above, the system operates as follows:
+* **Power & Safety:** A Slide Switch acts as the master power and emergency halt button. When toggled ON, a Red LED lights up to indicate the system is active.
+* **Speed Control:** The fan's blade speed is manually adjusted using a Potentiometer. The Arduino converts this analog reading into a PWM signal, sending it to the L293D Motor Driver to smoothly spin the DC Gear Motor.
+* **Auto-Swing:** While active, a Micro Servo automatically oscillates between 50° and 130° to mimic a real fan's panning motion.
+* **Live Dashboard:** A 16x2 I2C LCD continuously displays the current power state ("NYALA"/"MATI") and the real-time speed percentage.
 
-One standout feature is its precise speed control. Instead of relying on restrictive mechanical buttons, this simulation utilizes a rotary potentiometer to offer fluid, variable speed adjustment. The Arduino reads the analog voltage and mathematically maps it to a Pulse Width Modulation (PWM) signal. This PWM signal is fed into an L293D motor driver, which efficiently regulates the voltage supplied to the DC motor representing the fan blades.
-
-To emulate the realistic behavior of a commercial fan, the prototype features an automated panning mechanism powered by a micro servo motor. When activated, the servo independently begins a sweeping motion. The oscillation angle is constrained within a specific range, sweeping symmetrically from 50 to 130 degrees to ensure focused airflow. Finally, real-time status monitoring is handled by a 16x2 I2C LCD, acting as a digital dashboard displaying the power state and current speed percentage.
+This prototype effectively bridges basic electronic principles with practical household automation.
 
 ---
 
@@ -23,9 +25,9 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 | :--- | :--- |
 | **Nama** | Permana Eka Prayoga |
 | **NIM** | 24090620005 |
-| **Email** | permana9473fv.2024@student.uny.ac.id |
 | **Program Studi** | D4 Teknik Elektronika |
 | **Mata Kuliah** | Praktek Mikrokontroller |
+| **Email** | permana9473fv.2024@student.uny.ac.id |
 
 ---
 
@@ -37,13 +39,13 @@ To emulate the realistic behavior of a commercial fan, the prototype features an
 
 ---
 
-## ⚙️ System Logic (Cara Kerja)
-1. **Standby Mode:** Saat sakelar di posisi OFF (LOW), mikrokontroler memutus sinyal PWM, mematikan LED, dan mengembalikan posisi Servo ke titik tengah (90°). Layar LCD menampilkan status "MATI".
-2. **Active Mode:** Saat sakelar digeser ke ON (HIGH), sistem aktif dan membaca input analog dari potensiometer (0-1023).
-3. **Speed Control:** Nilai analog tersebut di-mapping menjadi nilai PWM (0-255) yang dikirim ke pin `EN1` pada L293D untuk memutar motor DC.
-4. **Auto-Swing:** Secara bersamaan, Servo Motor akan melakukan *looping* ayunan dari sudut 50° ke 130° dan sebaliknya dengan penambahan *step* yang halus.
-5. **Real-time UI:** LCD I2C di-update secara berkala tanpa menggunakan fungsi `delay()` yang memblokir program, sehingga pembacaan sensor dan pergerakan aktuator tetap responsif.
-6. **Emergency / Fail-Safe Stop:** Berfungsi ganda sebagai pengaman, menggeser sakelar utama ke posisi OFF akan secara instan memutus daya putaran aktuator motor DC dan menghentikan pergerakan mekanis secara aman dan terkendali.
+## ⚙️ System Logic
+1. **Standby Mode:** When the switch is in the OFF (LOW) position, the microcontroller cuts off the PWM signal, turns off the LED, and returns the Servo to its center position (90°). The LCD displays the status as "MATI" (OFF).
+2. **Active Mode:** When the switch is toggled ON (HIGH), the system activates and reads the analog input from the potentiometer (0-1023).
+3. **Speed Control:** The analog value is mapped to a PWM value (0-255) which is sent to the `EN1` pin on the L293D to rotate the DC motor.
+4. **Auto-Swing:** Simultaneously, the Servo Motor loops its swing from 50° to 130° and vice versa with smooth step increments.
+5. **Real-time UI:** The I2C LCD is updated periodically without using blocking `delay()` functions, ensuring sensor readings and actuator movements remain highly responsive.
+6. **Emergency / Fail-Safe Stop:** Doubling as a safety feature, toggling the main switch to the OFF position instantly cuts power to the DC motor's rotation and safely halts all mechanical movements.
 
 ---
 
