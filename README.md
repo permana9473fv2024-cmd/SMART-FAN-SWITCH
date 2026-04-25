@@ -1,7 +1,10 @@
 # Identitas Mahasiswa
 Nama: Permana Eka Prayoga
+
 NIM: 24090620005
+
 Mata Kuliah: Praktek Mikrokontroller
+
 Program Studi: D4 Teknik Elektronika
 
 # SMART-FAN-SWITCH
